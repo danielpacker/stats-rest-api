@@ -18,7 +18,7 @@ Just clone the github project, cd into the directory, and run bootRun to build a
 
 * There is one REST conroller that defines the endpoints.
 * The Statistics singleton acts as a cache and statistics service. All data is static and access is synchronized for thread safety.
-* A list of DSS (DoubleSummaryStatistics) are maintained where the number of buckets are scaled up based on REFRESH_RATE_MS. This allows update and retrieval of statistics in O(1) time and space, as transaction are not stored, only summaries. More about REFRESH_RATE_MS below.
+* A list of DSS (DoubleSummaryStatistics) are maintained where the number of buckets are scaled up based on REFRESH_RATE_MS. This allows update and retrieval of statistics in O(1) time and space, as transaction are not stored, only summaries. Further, statistics calculations are done via scheduled tasks, so API requests never need to wait for number crunching. More about REFRESH_RATE_MS below.
 * Spring's @Schedule is used to update statistics every REFRESH_RATE_MS milliseconds. The class StatisticsTicker has a doTick() method which calls the update code in Statistics to refresh stats.
 * In tests, StatisticsTicker's doTick() is used to simulate a clock tick and Statistics.clear() is used to clear stats.
 * The Transaction and StatisticsView classes are POJO's, and StatisticsView is used for JSON in controller.
