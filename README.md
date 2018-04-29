@@ -74,7 +74,7 @@ The only prerequisites are Java 8 SE and the Java 8 SDK. Untested on other versi
 
 ## Misc
 
-* The following is an extra piece added for some very naive load/blackbox testing:
+* The following is an extra piece added for some very naive load/blackbox testing and is not part of the Java project:
 * A testing script (requires python3 and requests lib) is included: misc/testrestapi.py
 * Run like this: python testrestapi.py <NUM REQUESTS> <REQUESTS DELAY>
 * e.g. NUM REQUESTS could be 100 and REQUESTS DELAY could be 0.5 to serially submit 100 requests in a row with a 0.5 second delay in between.
