@@ -1,4 +1,4 @@
-# Project Title
+# Statistics REST API
 
 REST API that captures realtime transaction statistics. Imlemented in Spring Boot. Tested on OSX 10.13.4 w/ Java 1.8.0_66 and Ubuntu 16.04.1 LTS w/ Java 1.8.0_162.
 
