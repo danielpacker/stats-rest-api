@@ -33,6 +33,29 @@ Just clone the github project, cd into the directory, and run bootRun to build a
 * DoubleSummaryStatistics was used for all number crunching to avoid re-inventing the wheel and because I would hope it's fast. 
 * It's assumed that floating point rounding errors are not an issue, but use of BigDecimal vs double would potentially be more appropriate in a production system.
 
+### Messages
+
+* The /tranasctions endpoint receives messages of the form:
+
+```JSON
+{
+  "amount": 94.0, 
+  "timestamp": 1524970473929
+}
+```
+
+* The /statistics endpoint produces messages of the form:
+
+```JSON
+{
+    "count": 0,
+    "sum": 0,
+    "avg": 0,
+    "min": 0,
+    "max": 0
+}
+```
+
 ### Prerequisites
 
 The only prerequisites are Java 8 SE and the Java 8 SDK. Untested on other versions, but may work.
