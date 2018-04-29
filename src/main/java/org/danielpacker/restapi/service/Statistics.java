@@ -13,7 +13,7 @@ public class Statistics {
     private static StatisticsView statsView = new StatisticsView();
 
     // Modifying REFRESH_RATE_MS will generate fewer or more buckets.
-    static final int REFRESH_RATE_MS = 1000; // used by StatisticsTicker
+    static final int REFRESH_RATE_MS = 250; // used by StatisticsTicker
     private static final int TIME_PERIOD_MS = 60*1000;
     private static final int MAX_BUCKETS = TIME_PERIOD_MS / REFRESH_RATE_MS;
 
