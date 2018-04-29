@@ -20,7 +20,7 @@ Just clone the github project, cd into the directory, and run bootRun to build a
 * The Statistics singleton acts as a cache and statistics service. All data is static and access is synchronized for thread safety.
 * A list of DSS (DoubleSummaryStatistics) are maintained where the number of buckets are scaled up based on REFRESH_RATE_MS. This allows update and retrieval of statistics in O(1) time and space, as transaction are not stored, only summaries. More about REFRESH_RATE_MS below.
 * Spring's @Schedule is used to update statistics every REFRESH_RATE_MS milliseconds. The class StatisticsTicker has a doTick() method which calls the update code in Statistics to refresh stats.
-* In tests, StatisticsTicker's doTick() is used to simulat a clock tick and Statistics.clear() is used to clear stats.
+* In tests, StatisticsTicker's doTick() is used to simulate a clock tick and Statistics.clear() is used to clear stats.
 * The Transaction and StatisticsView classes are POJO's, and StatisticsView is used for JSON in controller.
 
 ### Assumptions & Explanations
@@ -52,7 +52,7 @@ The only prerequisites are Java 8 SE and the Java 8 SDK. Untested on other versi
 ## Misc
 
 * The following is an extra piece added for some very naive load/blackbox testing:
-* A testing script (python) is included: misc/testrestapi.py
+* A testing script (requires python3 and requests lib) is included: misc/testrestapi.py
 * Run like this: python testrestapi.py <NUM REQUESTS> <REQUESTS DELAY>
 * e.g. NUM REQUESTS could be 100 and REQUESTS DELAY could be 0.5 to serially submit 100 requests in a row with a 0.5 second delay in between.
 
