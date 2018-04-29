@@ -20,7 +20,7 @@ Just clone the github project, cd into the directory, and run bootRun to build a
 * The Statistics singleton acts as a cache and statistics service. All data is static and access is synchronized for thread safety.
 * A list of DSS (DoubleSummaryStatistics) are maintained where the number of buckets are scaled up based on REFRESH_RATE_MS. This allows update and retrieval of statistics in O(1) time and space, as transaction are not stored, only summaries. More about REFRESH_RATE_MS below.
 * Spring's @Schedule is used to update statistics every REFRESH_RATE_MS milliseconds. The class StatisticsTicker has a doTick() method which calls the update code in Statistics to refresh stats.
-** In tests, StatisticsTicker's doTick() is used to simulat a clock tick and Statistics.clear() is used to clear stats.
+* In tests, StatisticsTicker's doTick() is used to simulat a clock tick and Statistics.clear() is used to clear stats.
 * The Transaction and StatisticsView classes are POJO's, and StatisticsView is used for JSON in controller.
 
 ### Assumptions & Explanations
@@ -31,6 +31,7 @@ Just clone the github project, cd into the directory, and run bootRun to build a
 * Increasing real-time resolution will increase memory and CPU usage, but in terms of number of transactions time and space is O(1). I have monitored memory usage and it does not change over time.
 * No attempt at persistence was made and stats will not persist once app shuts down. This is intentional.
 * DoubleSummaryStatistics was used for all number crunching to avoid re-inventing the wheel and because I would hope it's fast. 
+* It's assumed that floating point rounding errors are not an issue, but use of BigDecimal vs double would potentially be more appropriate in a production system.
 
 ### Prerequisites
 
